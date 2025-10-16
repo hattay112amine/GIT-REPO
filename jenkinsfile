@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'JDK17'
+    }
+    stages {
+        stage('Checkout code') {
+            steps {
+                git branch: 'master', url: 'https://github.com/hattay112amine/GIT-REPO.git'
+            }
+        }
+        stage('Compile code') {
+            steps {
+                sh 'javac Test.java'
+            }
+        }
+        stage('Execute code') {
+            steps {
+                sh 'java Test'
+            }
+        }
+    }
+}
